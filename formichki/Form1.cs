@@ -10,12 +10,16 @@ using System.Windows.Forms;
 using System.Threading;
 
 
+
 namespace formichki
 {
     public partial class Form1 : Form
     {
         private static readonly Random random = new Random();
         private Graphics formula;
+        private bool Rectanglespawns;
+        private bool Trianglespawns;
+        private bool Circlespawns;
 
         public Form1()
         {
@@ -32,12 +36,13 @@ namespace formichki
 
         private void button1_Click(object sender, EventArgs e)
         {   
-            th = new Thread(threadsquare);
+            th = new Thread(threadrectangle);
+            Rectanglespawns = true;
             th.Start();
         }
-        public void threadsquare()
+        public void threadrectangle()
         {
-            for (int i = 0; i < 100; i++)
+            while(Rectanglespawns)
             {
                 this.CreateGraphics().DrawRectangle(new Pen(RandomColor(), 4), new Rectangle(rdm.Next(0, this.Width),rdm.Next(0, this.Height), rdm.Next(0, this.Width), rdm.Next(0, this.Height)));
                 Thread.Sleep(100);
@@ -53,17 +58,20 @@ namespace formichki
         }
         public void threadtriangle()
         {
-            int size;
-            ValueOfStuff();
-            if (panelYDiff < panelXDiff)
+            while(Trianglespawns)
             {
-                size = panelYDiff / 6;
+                int size;
+                ValueOfStuff();
+                if (panelYDiff < panelXDiff)
+                {
+                    size = panelYDiff / 6;
+                }
+                else
+                {
+                    size = panelXDiff / 6;
+                }
+                TriangleFormula(new Point(panelX, panelY), size);
             }
-            else
-            {
-                size = panelXDiff / 6;
-            }
-            TriangleFormula(new Point(panelX, panelY), size);
         }
         private Color RandomColor()
         {
