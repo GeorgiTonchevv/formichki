@@ -95,5 +95,30 @@ namespace formichki
             Graphics formula = CreateGraphics();
             formula.DrawPolygon(new Pen(RandomColor(),3), new Point[] { p, new Point(p.X - size, p.Y + (int)(size * Math.Sqrt(3))), new Point(p.X + size, p.Y + (int)(size * Math.Sqrt(3))) });
         }
+        public void threadcircle()
+        {
+            while (Circlespawns)
+            {
+                int size;
+                ValueOfStuff();
+                if (panelYDiff < panelXDiff)
+                {
+                    size = panelYDiff / 4;
+                }
+                else
+                {
+                    size = panelXDiff / 4;
+                }
+                this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 4), new Rectangle(rdm.Next(0, this.Width), rdm.Next(0, this.Height), size, size));
+                Thread.Sleep(100);
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            th2 = new Thread(threadcircle);
+            Circlespawns = true;
+            th2.Start();
+        }
     }
 }
