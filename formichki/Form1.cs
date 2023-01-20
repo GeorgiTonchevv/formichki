@@ -71,6 +71,7 @@ namespace formichki
                     size = panelXDiff / 6;
                 }
                 TriangleFormula(new Point(panelX, panelY), size);
+                Thread.Sleep(100);
             }
         }
         private Color RandomColor()
@@ -86,12 +87,13 @@ namespace formichki
         private void button2_Click(object sender, EventArgs e)
         {
             th1 = new Thread(threadtriangle);
+            Trianglespawns = true;
             th1.Start();
         }
         private void TriangleFormula(Point p, int size)
         {
             Graphics formula = CreateGraphics();
-            formula.DrawPolygon(new Pen(RandomColor()), new Point[] { p, new Point(p.X - size, p.Y + (int)(size * Math.Sqrt(3))), new Point(p.X + size, p.Y + (int)(size * Math.Sqrt(3))) });
+            formula.DrawPolygon(new Pen(RandomColor(),3), new Point[] { p, new Point(p.X - size, p.Y + (int)(size * Math.Sqrt(3))), new Point(p.X + size, p.Y + (int)(size * Math.Sqrt(3))) });
         }
     }
 }
