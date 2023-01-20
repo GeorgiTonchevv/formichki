@@ -45,7 +45,12 @@ namespace formichki
         {
             while(Rectanglespawns)
             {
-                this.CreateGraphics().DrawRectangle(new Pen(RandomColor(), 4), new Rectangle(rdm.Next(0, this.Width),rdm.Next(0, this.Height), rdm.Next(0, this.Width), rdm.Next(0, this.Height)));
+                int width;
+                int height;
+                ValueOfStuff();
+                width = random.Next(0, panelXDiff) / 4;
+                height = random.Next(0, panelYDiff) / 4;
+                this.CreateGraphics().DrawRectangle(new Pen(RandomColor(), 3), panelX, panelY, width, height);
                 Thread.Sleep(3000);
             }
         }
@@ -72,7 +77,7 @@ namespace formichki
                     size = panelXDiff / 6;
                 }
                 TriangleFormula(new Point(panelX, panelY), size);
-                Thread.Sleep(2000);
+                Thread.Sleep(4000);
             }
         }
         private Color RandomColor()
