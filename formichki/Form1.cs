@@ -77,7 +77,7 @@ namespace formichki
                     size = panelXDiff / 6;
                 }
                 TriangleFormula(new Point(panelX, panelY), size);
-                Thread.Sleep(4000);
+                Thread.Sleep(2000);
             }
         }
         private Color RandomColor()
