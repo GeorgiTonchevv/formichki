@@ -46,7 +46,7 @@ namespace formichki
             while(Rectanglespawns)
             {
                 this.CreateGraphics().DrawRectangle(new Pen(RandomColor(), 4), new Rectangle(rdm.Next(0, this.Width),rdm.Next(0, this.Height), rdm.Next(0, this.Width), rdm.Next(0, this.Height)));
-                Thread.Sleep(100);
+                Thread.Sleep(3000);
             }
         }
         public void ValueOfStuff()
@@ -72,7 +72,7 @@ namespace formichki
                     size = panelXDiff / 6;
                 }
                 TriangleFormula(new Point(panelX, panelY), size);
-                Thread.Sleep(100);
+                Thread.Sleep(2000);
             }
         }
         private Color RandomColor()
@@ -111,7 +111,7 @@ namespace formichki
                     size = panelXDiff / 4;
                 }
                 this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 3), panelX, panelY, size, size);
-                Thread.Sleep(100);
+                Thread.Sleep(4000);
             }
         }
 
@@ -146,7 +146,7 @@ namespace formichki
                 this.CreateGraphics().DrawEllipse(randomColor, panelX - size / 4, panelY - size / 4, size, size);
                 this.CreateGraphics().DrawEllipse(randomColor, panelX, panelY, size - size / 2, size - size / 2);
 
-                Thread.Sleep(100);
+                Thread.Sleep(4000);
             }
         }
 
@@ -160,7 +160,7 @@ namespace formichki
         {
             Rectanglespawns = false;
             Trianglespawns = false;
-            Circlespawns = false; ;
+            Circlespawns = false;
         }
     }
 }
