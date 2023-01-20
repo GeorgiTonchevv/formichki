@@ -28,6 +28,7 @@ namespace formichki
         Thread th;
         Thread th1;
         Thread th2;
+        Thread th3;
         Random rdm;
         int panelY;
         int panelX;
@@ -109,7 +110,7 @@ namespace formichki
                 {
                     size = panelXDiff / 4;
                 }
-                this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 4), new Rectangle(rdm.Next(0, this.Width), rdm.Next(0, this.Height), size, size));
+                this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 3), panelX, panelY, size, size);
                 Thread.Sleep(100);
             }
         }
@@ -119,6 +120,33 @@ namespace formichki
             th2 = new Thread(threadcircle);
             Circlespawns = true;
             th2.Start();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            th3 = new Thread(threadring);
+            Circlespawns = true;
+            th3.Start();
+        }
+        public void threadring()
+        {
+            while (Circlespawns)
+            {
+                int size;
+                ValueOfStuff();
+                if (panelYDiff < panelXDiff)
+                {
+                    size = panelYDiff / 4;
+                }
+                else
+                {
+                    size = panelXDiff / 4;
+                }
+                this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 3), panelX - size / 4, panelY - size / 4, size, size);
+                this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 3), panelX, panelY, size - size / 2, size - size / 2);
+
+                Thread.Sleep(100);
+            }
         }
     }
 }
