@@ -132,6 +132,7 @@ namespace formichki
         {
             while (Circlespawns)
             {
+                var randomColor = new Pen(RandomColor(), 3);
                 int size;
                 ValueOfStuff();
                 if (panelYDiff < panelXDiff)
@@ -142,11 +143,24 @@ namespace formichki
                 {
                     size = panelXDiff / 4;
                 }
-                this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 3), panelX - size / 4, panelY - size / 4, size, size);
-                this.CreateGraphics().DrawEllipse(new Pen(RandomColor(), 3), panelX, panelY, size - size / 2, size - size / 2);
+                this.CreateGraphics().DrawEllipse(randomColor, panelX - size / 4, panelY - size / 4, size, size);
+                this.CreateGraphics().DrawEllipse(randomColor, panelX, panelY, size - size / 2, size - size / 2);
 
                 Thread.Sleep(100);
             }
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            Graphics delete = CreateGraphics();
+            delete.Clear(Color.White);
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            Rectanglespawns = false;
+            Trianglespawns = false;
+            Circlespawns = false; ;
         }
     }
 }
